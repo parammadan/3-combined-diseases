@@ -1,9 +1,11 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on June 17 17:53:51 2022
+Created on Fri Jun 17 19:16:53 2022
 
-@author: Param
+@author: param
 """
+
 
 import pickle
 import streamlit as st
@@ -12,27 +14,23 @@ from streamlit_option_menu import option_menu
 
 # loading the saved models
 
-diabetes_model = pickle.load(open('C:/Users/siddhardhan/Desktop/Multiple Disease Prediction System/saved models/diabetes_model.sav', 'rb'))
+diabetes_model = pickle.load(open('/Users/param/diabetes_model.sav', 'rb'))
 
-heart_disease_model = pickle.load(open('C:/Users/siddhardhan/Desktop/Multiple Disease Prediction System/saved models/heart_disease_model.sav','rb'))
+heart_disease_model = pickle.load(open('/Users/param/heart_disease_model.sav', 'rb'))
 
-parkinsons_model = pickle.load(open('C:/Users/siddhardhan/Desktop/Multiple Disease Prediction System/saved models/parkinsons_model.sav', 'rb'))
+parkinsons_model = pickle.load(open('/Users/param/parkinsons_model.sav', 'rb'))
 
 
-
-# sidebar for navigation
 with st.sidebar:
     
-    selected = option_menu('Multiple Disease Prediction System',
+    selected = option_menu('3-combined-diseases Prediction System',
                           
                           ['Diabetes Prediction',
                            'Heart Disease Prediction',
                            'Parkinsons Prediction'],
                           icons=['activity','heart','person'],
                           default_index=0)
-    
-    
-# Diabetes Prediction Page
+    # Diabetes Prediction Page
 if (selected == 'Diabetes Prediction'):
     
     # page title
@@ -242,5 +240,6 @@ if (selected == "Parkinsons Prediction"):
           parkinsons_diagnosis = "The person does not have Parkinson's disease"
         
     st.success(parkinsons_diagnosis)
+
 
 
